@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>I Love You!!!</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <canvas id="heartCanvas"></canvas>
+
+    <div id="sentence">
+        Happy Anniversary
+        <br/>
+        <span id="month">10</span> Months!
+    </div>
+
+    <!-- Stylish Password popup box -->
+    <div id="passwordPopup" style="display:none;">
+        <div id="passwordBox" style="
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            backdrop-filter: blur(10px);
+            border: 2px solid #ff6b6b;">
+            <h2 style="color: #ff6b6b; font-family: 'Arial', sans-serif; font-size: 24px;">I Love You!!!</h2>
+            <input type="password" id="passwordInput" placeholder="Reply..  [text only ]" style="
+                width: 80%;
+                padding: 12px;
+                border-radius: 10px;
+                border: 2px solid #ff6b6b;
+                margin-bottom: 15px;
+                font-size: 16px;
+                font-family: 'Arial', sans-serif;
+                transition: border-color 0.3s ease;">
+            <button id="submitPassword" style="
+                width: 84%;
+                padding: 12px;
+                background-color: #ff6b6b;
+                color: white;
+                border: none;
+                border-radius: 10px;
+                font-size: 18px;
+                font-family: 'Arial', sans-serif;
+                cursor: pointer;
+                transition: background-color 0.3s ease, transform 0.3s ease;">
+                Send
+            </button>
+            <p id="errorMessage" style="color: red; margin-top: 10px; display: none;">Uh.. Do you really reply like this?! Reply correctly if you wanna move further!!!!!</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+
+    <script>
+        // Show the password popup after the month display
+        setTimeout(() => {
+            document.getElementById('passwordPopup').style.display = 'block'; // Show the password box
+        }, 10000); // Adjust timing as needed
+
+         // Password check logic
+    const correctPassword = "I too love you"; // Replace with your password
+
+document.getElementById('submitPassword').addEventListener('click', function() {
+    const enteredPassword = document.getElementById('passwordInput').value;
+
+    // Convert both to lowercase for case-insensitive comparison
+    if (enteredPassword.toLowerCase() === correctPassword.toLowerCase()) {
+        window.location.href = "love.html"; // Redirect to love.html if password is correct
+    } else {
+        document.getElementById('errorMessage').style.display = 'block'; // Show error message
+    }
+});
+
+        // Add some interactive effects for button hover
+        const submitBtn = document.getElementById('submitPassword');
+        submitBtn.addEventListener('mouseover', function() {
+            this.style.backgroundColor = '#e55b5b';
+            this.style.transform = 'scale(1.05)';
+        });
+        submitBtn.addEventListener('mouseout', function() {
+            this.style.backgroundColor = '#ff6b6b';
+            this.style.transform = 'scale(1)';
+        });
+
+        // Add interactive effects for password input
+        const passwordInput = document.getElementById('passwordInput');
+        passwordInput.addEventListener('focus', function() {
+            this.style.borderColor = '#ff6b6b';
+        });
+        passwordInput.addEventListener('blur', function() {
+            this.style.borderColor = '#ccc';
+        });
+    </script>
+</body>
+
+</html>
